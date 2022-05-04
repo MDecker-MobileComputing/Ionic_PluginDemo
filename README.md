@@ -1,6 +1,6 @@
 # Ionic-App "Plugin-Demo" #
 
-Simple [Ionic](https://ionicframework.com) app with Capacitor to demonstrate usage of [plugins](https://capacitorjs.com/docs/plugins).
+Simple [Ionic](https://ionicframework.com) app with [Capacitor](https://capacitorjs.com/) to demonstrate usage of [plugins](https://capacitorjs.com/docs/plugins).
 
 <br>
 
