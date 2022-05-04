@@ -13,7 +13,7 @@ export class Seite2Page  {
   /** Member-Variable mit Status der Batterie, wird per Interpolation auf HTML-Seite angezeigt. */
   public batterieStatus: string = "???";
 
-  constructor() { }
+  //constructor() { }
 
   /**
    * Event-Handler für Aktualisierung der Anzeige mit Batteriestatus.
@@ -21,6 +21,14 @@ export class Seite2Page  {
   public onButtonAktualisieren() {
 
     console.log("Sollte jetzt Batteriestatus aktualisieren.");
+  }
+
+  /**
+   * Event-Handler um aktuellen Batteriestatus in die Zwischenablage zu kopieren.
+   */
+  public onButtonInZwischenablageKopieren() {
+
+    console.log("Sollte jetzt Batteriestatus in Zwischenablage kopieren.");
   }
 
 }
