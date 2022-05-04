@@ -1,6 +1,8 @@
 <ion-app>
 
-  <ion-menu side="start" menuId="first">
+  <!-- Menü-Navigation nach https://remotestack.io/how-to-create-sidebar-navigation-in-ionic-angular-app/ -->
+
+  <ion-menu side="start" contentId="main-content">
     <ion-header>
       <ion-toolbar color="primary">
         <ion-title>Plugin-Demo</ion-title>
@@ -9,11 +11,12 @@
     <ion-content>
       <ion-list>
         <ion-item routerLink="/home"   routerDirection="forward" (click)="menuSchliessen()" >Übersicht</ion-item>
-        <ion-item routerLink="/seite2" routerDirection="forward" (click)="menuSchliessen()" >Seite 2</ion-item>
+        <ion-item routerLink="/seite2" routerDirection="forward" (click)="menuSchliessen()" >Batteriestatus</ion-item>
       </ion-list>
     </ion-content>
   </ion-menu>
 
-  <ion-router-outlet main><!-- Attribut "main" ist wichtig, siehe https://www.damirscorner.com/blog/posts/20190906-MakingAMenuWorkInIonic4.html -->
+  <ion-router-outlet id="main-content"><!-- Wert von Attribut "id" muss wie von "contentID" von ion-menu sein -->
   </ion-router-outlet>
+
 </ion-app>
