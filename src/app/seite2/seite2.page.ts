@@ -1,7 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Device } from '@capacitor/device';
+import { Clipboard } from '@capacitor/clipboard';
 
 /**
- * Seite für Anzeige Batteriestatus.
+ * Seite für Anzeige Batteriestatus mit Plugin `@capacitor/device` und Zugriff auf
+ * Zwischenablage mit `@capacitor/clipboard`.<br>
+ * <br>
+ * 
+ * Plugins dem Projekt hinzufügen:
+ * ```
+ * npm install @capacitor/device
+ * npm install @capacitor/clipboard
+ * ```
  */
 @Component({
   selector: 'app-seite2',
@@ -10,25 +20,41 @@ import { Component, OnInit } from '@angular/core';
 })
 export class Seite2Page  {
 
-  /** Member-Variable mit Status der Batterie, wird per Interpolation auf HTML-Seite angezeigt. */
+  /** Member-Variable mit Status der Batterie (z.B. "80%"), wird per Interpolation auf HTML-Seite angezeigt. */
   public batterieStatus: string = "???";
 
   //constructor() { }
 
   /**
    * Event-Handler für Aktualisierung der Anzeige mit Batteriestatus.
+   * Dieses Plugin steht aber nicht bei Ausführung mit `ionic serve` zur Verfügung;
+   * die in diesem Fall geworfene Exception wird mit einem `catch` gefangen.
    */
-  public onButtonAktualisieren() {
+  public async onButtonAktualisieren() {
 
-    console.log("Sollte jetzt Batteriestatus aktualisieren.");
+    try {
+
+      const batteryInfo = await Device.getBatteryInfo();
+
+      const batterieLevelProzent = batteryInfo.batteryLevel*100;
+      const batterieLadestatus   = batteryInfo.isCharging ? "lädt" : "lädt nicht";
+
+      this.batterieStatus = `${batterieLevelProzent} % (${batterieLadestatus})`;
+    }
+    catch (ex) {
+
+      console.log("Exception bei Abfrage von Batteriestatus: " + ex);
+      this.batterieStatus = "Nicht verfügbar";
+    }
   }
 
   /**
    * Event-Handler um aktuellen Batteriestatus in die Zwischenablage zu kopieren.
+   * Das dafür benötigte Plugin steht auch bei Test mit `ionic serve` zur Verfügung.
    */
-  public onButtonInZwischenablageKopieren() {
+  public async onButtonInZwischenablageKopieren() {
 
-    console.log("Sollte jetzt Batteriestatus in Zwischenablage kopieren.");
+    await Clipboard.write({ string: `Batteriestatus: ${this.batterieStatus}` });
   }
 
 }

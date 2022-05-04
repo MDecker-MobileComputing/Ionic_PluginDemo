@@ -1,0 +1,6 @@
+{
+	"appId": "de.mide.ionic.plugindemo",
+	"appName": "Plugin-Demo",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
