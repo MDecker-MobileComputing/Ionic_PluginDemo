@@ -6,7 +6,7 @@ import { Clipboard } from '@capacitor/clipboard';
  * Seite für Anzeige Batteriestatus mit Plugin `@capacitor/device` und Zugriff auf
  * Zwischenablage mit `@capacitor/clipboard`.<br>
  * <br>
- * 
+ *
  * Plugins dem Projekt hinzufügen:
  * ```
  * npm install @capacitor/device
@@ -29,6 +29,9 @@ export class Seite2Page  {
    * Event-Handler für Aktualisierung der Anzeige mit Batteriestatus.
    * Dieses Plugin steht aber nicht bei Ausführung mit `ionic serve` zur Verfügung;
    * die in diesem Fall geworfene Exception wird mit einem `catch` gefangen.
+   * <br>
+   * `batteryInfo.batteryLevel` enthält Wert von 0.0 bis 1.0, muss also für
+   * Anzeige in Prozent umgerechnet werden.
    */
   public async onButtonAktualisieren() {
 
@@ -36,7 +39,7 @@ export class Seite2Page  {
 
       const batteryInfo = await Device.getBatteryInfo();
 
-      const batterieLevelProzent = batteryInfo.batteryLevel*100;
+      const batterieLevelProzent = Math.round( batteryInfo.batteryLevel * 100 );
       const batterieLadestatus   = batteryInfo.isCharging ? "lädt" : "lädt nicht";
 
       this.batterieStatus = `${batterieLevelProzent} % (${batterieLadestatus})`;
