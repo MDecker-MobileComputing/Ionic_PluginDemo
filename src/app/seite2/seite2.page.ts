@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Device } from '@capacitor/device';
 import { Clipboard } from '@capacitor/clipboard';
 
@@ -18,9 +18,12 @@ import { Clipboard } from '@capacitor/clipboard';
   templateUrl: './seite2.page.html',
   styleUrls: ['./seite2.page.scss'],
 })
-export class Seite2Page  {
+export class Seite2Page implements OnInit {
 
-  /** Member-Variable mit Status der Batterie (z.B. "80%"), wird per Interpolation auf HTML-Seite angezeigt. */
+  /**
+   * Member-Variable mit Status der Batterie (z.B. "80%"),
+   * wird per Interpolation auf HTML-Seite angezeigt.
+   */
   public batterieStatus: string = "???";
 
   //constructor() { }
@@ -50,6 +53,16 @@ export class Seite2Page  {
       this.batterieStatus = "Nicht verfügbar";
     }
   }
+
+
+  /**
+   * Implementierung für die einzige Methode im Interface `OnInit`.
+   */
+  ngOnInit() {
+
+      this.onButtonAktualisieren();
+  }
+
 
   /**
    * Event-Handler um aktuellen Batteriestatus in die Zwischenablage zu kopieren.

@@ -1,21 +1,25 @@
-import { Component } from '@angular/core';
-import { AppLauncher } from '@capacitor/app-launcher';
+import { Component, OnInit  } from '@angular/core';
 import { ToastHelferService } from '../toast-helfer.service' ;
+import { Network } from '@capacitor/network';
 
 /**
- * Seite enthält Buttons um mit Plugin `@capacitor/app-launcher`
- * andere Apps zu öffnen.<br>
+ * Seite um aktuellen Netzwerkstatus mit entsprechendem Plugin abrufen.
+ * <br>
  *
- * Installation Plugin: `npm install @capacitor/app-launcher`
- *
- * Doku zu Plugin: https://capacitorjs.com/docs/apis/app-launcher`
+ * Doku zu Netzwerk-Plugin: https://capacitorjs.com/docs/apis/network
  */
 @Component({
   selector: 'app-seite3',
   templateUrl: './seite3.page.html',
   styleUrls: ['./seite3.page.scss'],
 })
-export class Seite3Page {
+export class Seite3Page implements OnInit {
+
+  /**
+   * Member-Variable mit Status der Batterie (z.B. "wifi (verbunden)"),
+   * wird per Interpolation auf HTML-Seite angezeigt.
+   */
+  public netzwerkstatus : string = "???";
 
   /**
    * Constructor für *Dependency Injection*.
@@ -23,22 +27,31 @@ export class Seite3Page {
   constructor(private toastHelferService: ToastHelferService) { }
 
   /**
-   * Event-Handler-Methode für Button, mit dem eine Lernkarte
-   * geöffnet werden.
+   * Event-Handler-Methode für Button "Aktualisieren".
    */
-  public async onButtonLernkarte1() {
+  public async onButtonAktualisieren() {
 
-    const canOpenUrlResult = await AppLauncher.canOpenUrl({ url: "de.mide.custom_action.zeige_lernkarte" });
+    const status = await Network.getStatus();
 
-    if (canOpenUrlResult.value === true) {
+    this.netzwerkstatus = status.connectionType;
+    // mögliche Werte für Connection Type: 'wifi' | 'cellular' | 'none' | 'unknown';
 
-      console.log("Externe App ist vorhanden, versuche sie zu öffnen.");
-      await AppLauncher.openUrl({ url: "de.mide.custom_action.zeige_lernkarte://?text_vorne=ADB&text_hinten=Android+Debug+Bridge" });
+    if (status.connected) {
+
+      this.netzwerkstatus += " (verbunden)";
 
     } else {
 
-      this.toastHelferService.zeigeToast("App ist nicht auf dem Gerät installiert.");
+      this.netzwerkstatus += " (nicht verbunden)";
     }
+  }
+
+  /**
+   * Implementierung für die einzige Methode im Interface `OnInit`.
+   */
+  ngOnInit() {
+
+    this.onButtonAktualisieren();
   }
 
 }

@@ -1,6 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>Andere App öffnen</ion-title>
+    <ion-title>Netzwerkstatus</ion-title>
     <ion-buttons slot="start">
       <ion-menu-button autoHide="false"></ion-menu-button>
     </ion-buttons>
@@ -9,8 +9,22 @@
 
 <ion-content [fullscreen]="true" class="ion-padding">
 
+  <ion-list>
+
+    <ion-item>
+      <ion-label>Netzwerkstatus:</ion-label>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>{{ netzwerkstatus }}</ion-label>
+    </ion-item>
+
+  </ion-list>
+
+
   <ion-button expand="block"
-             (click)="onButtonLernkarte1()"
-             color="primary">Lernkarte 1</ion-button>
+              (click)="onButtonAktualisieren()"
+              color="primary">Aktualisieren</ion-button>
+  &nbsp;
 
 </ion-content>
