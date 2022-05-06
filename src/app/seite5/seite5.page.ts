@@ -46,7 +46,14 @@ export class Seite5Page {
       mediaType      : this.camera.MediaType.PICTURE
   };
 
-  public bildBase64String = "";
+  /** 
+   * Default-Wert ist ein möglichst kleinstes Bild mit nur einem transparentem Punkt in Base64-Darstellung.
+   * (gif statt jpeg wie später das Foto, weil damit ein kürzerer String möglich ist).
+   * Lösung nach https://stackoverflow.com/a/9967193/1364368
+   * Base64 ist eine Kodierung (keine Verschlüsselung!), um binäre Daten (z.B. ein JPEG/GIF-Bild)
+   * nur mit ASCII-Zeichen darzustellen.
+   */ 
+  public bildBase64String = "data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==";
 
   /**
    * Constructor für *Dependency Injection*.
