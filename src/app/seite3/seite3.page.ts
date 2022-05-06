@@ -1,5 +1,5 @@
 import { Component, OnInit  } from '@angular/core';
-import { ToastHelferService } from '../toast-helfer.service' ;
+import { ToastHelferService } from '../toast-helfer.service';
 import { Network } from '@capacitor/network';
 
 /**

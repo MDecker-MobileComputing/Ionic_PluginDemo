@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Device } from '@capacitor/device';
 import { Clipboard } from '@capacitor/clipboard';
+import { ToastHelferService } from '../toast-helfer.service';
 
 /**
  * Seite für Anzeige Batteriestatus mit Plugin `@capacitor/device` und Zugriff auf
@@ -26,7 +27,12 @@ export class Seite2Page implements OnInit {
    */
   public batterieStatus: string = "???";
 
-  //constructor() { }
+
+  /**
+   * Constructor für *Dependency Injection*.
+   */
+  constructor(private toastHelferService: ToastHelferService) { }
+
 
   /**
    * Event-Handler für Aktualisierung der Anzeige mit Batteriestatus.
@@ -50,6 +56,9 @@ export class Seite2Page implements OnInit {
     catch (ex) {
 
       console.log("Exception bei Abfrage von Batteriestatus: " + ex);
+
+      this.toastHelferService.zeigeToast(`Batteriestatus nicht verfügbar.`);
+
       this.batterieStatus = "Nicht verfügbar";
     }
   }
