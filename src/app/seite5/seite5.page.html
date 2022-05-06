@@ -1,0 +1,21 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Foto</ion-title>
+    <ion-buttons slot="start">
+      <ion-menu-button autoHide="false"></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+
+  <ion-button expand="block"
+              (click)="onButtonAuslesen()"
+              color="primary">Foto aufnehmen</ion-button>
+  &nbsp;
+
+  <ion-img [src]="bildBase64String"></ion-img>
+
+  &nbsp;
+
+</ion-content>
