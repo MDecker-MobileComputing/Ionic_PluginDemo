@@ -13,6 +13,11 @@ import { ToastHelferService } from '../toast-helfer.service';
  * npm install @capacitor/device
  * npm install @capacitor/clipboard
  * ```
+ * <br>
+ * 
+ * Dokumentation für die Plugins:
+ * * https://capacitorjs.com/docs/apis/device
+ * * https://capacitorjs.com/docs/apis/clipboard
  */
 @Component({
   selector: 'app-seite2',
