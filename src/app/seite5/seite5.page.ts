@@ -71,7 +71,6 @@ export class Seite5Page {
 
     this.camera.getPicture(this.FOTO_OPTIONEN).then((imageData) => {
 
-        //this.bildBase64String = 'data:image/jpeg;base64,' + imageData;
         this.bildBase64String = `data:image/png;base64,${imageData}`;
         console.log(`bildBase64String=${this.bildBase64String}`);
 
