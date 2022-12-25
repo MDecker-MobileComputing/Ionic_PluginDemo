@@ -72,12 +72,12 @@ export class Seite4Page  {
       for (let kontakt of kontakteArray) {
 
         let id = kontakt.displayName;
-        this.kontakteArray.push(id);
+        this.kontakteArray.push("" + id);
       }
     }
     catch (ex) {
 
-      console.log("Exception beim Auslesen Adressbuch: " + ex);
+      console.log("Exception beim Auslesen von Adressbuch: " + ex);
       this.toastHelferService.zeigeToast(`Adressbuch kann nicht ausgelesen werden: ${ex}`);
     }
   }

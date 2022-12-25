@@ -53,10 +53,18 @@ export class Seite2Page implements OnInit {
 
       const batteryInfo = await Device.getBatteryInfo();
 
-      const batterieLevelProzent = Math.round( batteryInfo.batteryLevel * 100 );
-      const batterieLadestatus   = batteryInfo.isCharging ? "lädt" : "lädt nicht";
+      const batteryLevel = batteryInfo.batteryLevel;
+      if (batteryLevel) {
 
-      this.batterieStatus = `${batterieLevelProzent} % (${batterieLadestatus})`;
+        const batterieLevelProzent = Math.round( batteryLevel * 100 );
+        const batterieLadestatus   = batteryInfo.isCharging ? "lädt" : "lädt nicht";
+  
+        this.batterieStatus = `${batterieLevelProzent} % (${batterieLadestatus})`;  
+
+      } else {
+
+        throw Error("Batterie-Level nicht vorhanden.");
+      }
     }
     catch (ex) {
 
