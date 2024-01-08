@@ -4,14 +4,9 @@ import { Camera, CameraSource, CameraResultType } from '@capacitor/camera';
 
 
 /**
- * Seite um Foto mit Cordova-Plugin aufzunehmen:
+ * Seite um Foto mit Capacitor-Plugin aufzunehmen:
  * * https://ionicframework.com/docs/native/camera#installation
- * <br><br>
- *
- * Plugin dem Projekt hinzufügen:
- * ```
- * npm install @capacitor/camera
- * ```
+ * * Plugin hinzufügen: `npm install @capacitor/camera`
  * <br><br>
  *
  * Das Foto wird im Base64-Format zurückgeliefert, es kann in einer Ionic-App wie
