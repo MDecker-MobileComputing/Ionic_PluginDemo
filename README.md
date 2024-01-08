@@ -1,5 +1,7 @@
 # Ionic-App "Plugin-Demo" #
 
+<br>
+
 Simple [Ionic](https://ionicframework.com) app with [Capacitor](https://capacitorjs.com/) to demonstrate usage of [plugins](https://capacitorjs.com/docs/plugins).
 
 <br>
@@ -7,6 +9,8 @@ Simple [Ionic](https://ionicframework.com) app with [Capacitor](https://capacito
 ----
 
 ## Screenhots ##
+
+<br>
 
 ![Screenshot 1](screenshot_1.png)  &nbsp;  ![Screenshot 2](screenshot_2.png)
 
@@ -25,4 +29,8 @@ Simple [Ionic](https://ionicframework.com) app with [Capacitor](https://capacito
 
 ## License ##
 
+<br>
+
 See the [LICENSE file](LICENSE.md) for license rights and limitations (BSD 3-Clause License) for the files in this repository.
+
+<br>
