@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Contacts } from '@capacitor-community/contacts';
 import { ToastHelferService } from '../toast-helfer.service';
 
+
 /**
  * Seite zum Auslesen aller Kontakte aus dem Adressbuch mit
  * einem Community-Plugin.<br>
@@ -9,8 +10,9 @@ import { ToastHelferService } from '../toast-helfer.service';
  * Doku zu Plugin:
  * * https://www.npmjs.com/package/@capacitor-community/contacts
  * * https://github.com/capacitor-community/contacts#installation
+ * * https://capacitor-community.github.io/contacts/#/api
  * <br><br>
- * 
+ *
  * Folgende Permission in Manifest-Datei hinzufügen:
  * ```
  * <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -23,7 +25,7 @@ import { ToastHelferService } from '../toast-helfer.service';
  * Auch wenn die App nur Adressbuchdaten auslesen soll muss die Android-App die
  * Berechtigung `WRITE_CONTACTS` haben.
  * <br><br>
- * 
+ *
  * Für die Testdaten in der Adressbuch-App muss neben Vor- und Nachname mindestens
  * eine Email-Adresse eingegeben sein (sonst werden die Datensätze von dem Plugin
  * nicht erkannt).
@@ -51,14 +53,19 @@ export class Seite4Page  {
 
     try {
 
-      const permissionStatus = await Contacts.getPermissions();
-      if (permissionStatus.granted === false) {
+      const permissionStatus = await Contacts.requestPermissions();
+      if (permissionStatus.contacts !== "granted") {
 
         this.toastHelferService.zeigeToast("Fehlende Berechtigungen für Zugriff auf Adressbuch.");
         return;
       }
 
-      const ergebnisObj = await Contacts.getContacts();
+      const ergebnisObj = await Contacts.getContacts({
+        projection: { // Specify which fields should be retrieved.
+          name: true,
+          emails: true
+        }});
+
       const kontakteArray = ergebnisObj.contacts;
       console.log(`Kontakte: ${kontakteArray}`);
 
@@ -71,8 +78,12 @@ export class Seite4Page  {
       this.kontakteArray = [];
       for (let kontakt of kontakteArray) {
 
+        this.kontakteArray.push("" + kontakt.name?.display);
+
+        /*
         let id = kontakt.displayName;
         this.kontakteArray.push("" + id);
+        */
       }
     }
     catch (ex) {

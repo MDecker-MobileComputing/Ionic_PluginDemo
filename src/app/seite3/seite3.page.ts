@@ -2,6 +2,7 @@ import { Component, OnInit  } from '@angular/core';
 import { ToastHelferService } from '../toast-helfer.service';
 import { Network } from '@capacitor/network';
 
+
 /**
  * Seite um aktuellen Netzwerkstatus mit entsprechendem Plugin abrufen.
  * <br>

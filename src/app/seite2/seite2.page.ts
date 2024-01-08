@@ -3,10 +3,11 @@ import { Device } from '@capacitor/device';
 import { Clipboard } from '@capacitor/clipboard';
 import { ToastHelferService } from '../toast-helfer.service';
 
+
 /**
  * Seite für Anzeige Batteriestatus mit Plugin `@capacitor/device` und Zugriff auf
- * Zwischenablage mit `@capacitor/clipboard`.<br>
- * <br>
+ * Zwischenablage mit `@capacitor/clipboard`.
+ * <br><br>
  *
  * Plugins dem Projekt hinzufügen:
  * ```
@@ -14,7 +15,7 @@ import { ToastHelferService } from '../toast-helfer.service';
  * npm install @capacitor/clipboard
  * ```
  * <br>
- * 
+ *
  * Dokumentation für die Plugins:
  * * https://capacitorjs.com/docs/apis/device
  * * https://capacitorjs.com/docs/apis/clipboard
@@ -58,8 +59,8 @@ export class Seite2Page implements OnInit {
 
         const batterieLevelProzent = Math.round( batteryLevel * 100 );
         const batterieLadestatus   = batteryInfo.isCharging ? "lädt" : "lädt nicht";
-  
-        this.batterieStatus = `${batterieLevelProzent} % (${batterieLadestatus})`;  
+
+        this.batterieStatus = `${batterieLevelProzent} % (${batterieLadestatus})`;
 
       } else {
 
