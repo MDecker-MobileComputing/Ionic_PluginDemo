@@ -93,7 +93,8 @@ export class Seite2Page implements OnInit {
    */
   public async onButtonInZwischenablageKopieren() {
 
-    await Clipboard.write({ string: `Batteriestatus: ${this.batterieStatus}` });
+    const nachricht = `Batteriestatus: ${this.batterieStatus}`;
+    await Clipboard.write({ string: nachricht });
   }
 
 }
