@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ToastController } from '@ionic/angular';
 
+
 @Injectable({
   providedIn: 'root'
 })
@@ -14,7 +15,7 @@ export class ToastHelferService {
    *
    * @param nachricht  Anzuzeigender Text
    */
-   async zeigeToast(nachricht: string) {
+   async zeigeToast( nachricht: string ) {
 
     const toast =
           await this.toastController.create({
