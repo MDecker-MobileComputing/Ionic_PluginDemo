@@ -2,7 +2,9 @@
 
 <br>
 
-Simple [Ionic](https://ionicframework.com) app with [Capacitor](https://capacitorjs.com/) to demonstrate usage of [plugins](https://capacitorjs.com/docs/plugins).
+Diese Repository enthält ein [Ionic](https://ionicframework.com/)/Angular-Projekt für eine mobile App,
+mit der mehrere [Plugins](https://capacitorjs.com/docs/plugins) für [Capacitor](https://capacitorjs.com/)
+demonstriert werden
 
 <br>
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ToastHelferService } from '../toast-helfer.service';
+import { ToastHelferService } from '../toast-helfer-service';
 import { Camera, CameraSource, CameraResultType } from '@capacitor/camera';
 
 
@@ -23,8 +23,10 @@ import { Camera, CameraSource, CameraResultType } from '@capacitor/camera';
   selector: 'app-seite5',
   templateUrl: './seite5.page.html',
   styleUrls: ['./seite5.page.scss'],
+  standalone: false
 })
 export class Seite5Page {
+
 
   /**
    * Default-Wert ist ein möglichst kleinstes Bild mit nur einem transparentem Punkt in Base64-Darstellung.

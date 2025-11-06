@@ -1,5 +1,5 @@
-import { Component, OnInit  } from '@angular/core';
-import { ToastHelferService } from '../toast-helfer.service';
+import { Component, OnInit } from '@angular/core';
+import { ToastHelferService } from '../toast-helfer-service';
 import { Network } from '@capacitor/network';
 
 
@@ -13,8 +13,10 @@ import { Network } from '@capacitor/network';
   selector: 'app-seite3',
   templateUrl: './seite3.page.html',
   styleUrls: ['./seite3.page.scss'],
+  standalone: false
 })
 export class Seite3Page implements OnInit {
+
 
   /**
    * Member-Variable mit Status der Batterie (z.B. "wifi (verbunden)"),

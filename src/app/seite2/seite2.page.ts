@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Device } from '@capacitor/device';
 import { Clipboard } from '@capacitor/clipboard';
-import { ToastHelferService } from '../toast-helfer.service';
+import { ToastHelferService } from '../toast-helfer-service';
 
 
 /**
@@ -24,8 +24,10 @@ import { ToastHelferService } from '../toast-helfer.service';
   selector: 'app-seite2',
   templateUrl: './seite2.page.html',
   styleUrls: ['./seite2.page.scss'],
+  standalone: false
 })
 export class Seite2Page implements OnInit {
+
 
   /**
    * Member-Variable mit Status der Batterie (z.B. "80%"),

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Contacts } from '@capacitor-community/contacts';
-import { ToastHelferService } from '../toast-helfer.service';
+import { ToastHelferService } from '../toast-helfer-service';
 
 
 /**
@@ -34,8 +34,10 @@ import { ToastHelferService } from '../toast-helfer.service';
   selector: 'app-seite4',
   templateUrl: './seite4.page.html',
   styleUrls: ['./seite4.page.scss'],
+  standalone: false
 })
-export class Seite4Page  {
+export class Seite4Page {
+
 
   /** Array mit Anzeigetext für gefundene Kontakte, wird auf UI angezeigt. */
   public kontakteArray: string[] = [];
